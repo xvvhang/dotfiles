@@ -1,0 +1,35 @@
+[output]
+platform_title = true
+show_hyphens = true
+compact = true
+
+[indent]
+title = 0
+description = 0
+bullet = 0
+example = 2
+
+[style.title]
+color = 'default'
+
+[style.description]
+color = 'default'
+dim = true
+
+[style.bullet]
+color = 'yellow'
+
+[style.example]
+color = 'magenta'
+
+[style.url]
+color = 'blue'
+italic = false
+
+[style.inline_code]
+color = 'cyan'
+italic = false
+
+[style.placeholder]
+color = 'red'
+italic = false

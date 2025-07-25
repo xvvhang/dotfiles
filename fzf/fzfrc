@@ -1,0 +1,13 @@
+--color="dark"
+--color="gutter:-1"
+--color="current-bg:-1"
+--height="40%"
+--layout="reverse"
+--border="rounded"
+--pointer=">"
+--marker="*"
+--scrollbar=""
+--info="inline-right"
+--separator=""
+--preview="bat --color='always' --theme='auto' --style='numbers,changes' {}"
+

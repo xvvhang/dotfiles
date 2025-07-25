@@ -1,0 +1,26 @@
+[user]
+	name = xuhang
+	email = xvvhang@gmail.com
+[core]
+	editor = nvim
+	pager = delta
+[init]
+	defaultBranch = main
+[color]
+	ui = true
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+  side-by-side = true
+  line-numbers = true
+[merge]
+	conflictStyle = zdiff3
+[push]
+	default = current
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/local/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/local/bin/gh auth git-credential
