@@ -47,6 +47,7 @@ abbr tas 'tmux attach -t'
 abbr tka 'tmux kill-server'
 
 alias n='nvim'
+alias e='emacs'
 alias g='lazygit'
 
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$XDG_CONFIG_HOME'
