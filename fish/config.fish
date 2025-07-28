@@ -49,9 +49,14 @@ abbr tka 'tmux kill-server'
 alias n='nvim'
 alias g='lazygit'
 
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$XDG_CONFIG_HOME'
+alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$XDG_CONFIG_HOME'
+alias lazydot='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$XDG_CONFIG_HOME'
 
 zoxide init fish | source
 fzf --fish | source
 fnm env --shell fish | source
 glab completion -s fish | source
+
+function set_bar_cursor --on-event fish_postexec
+  echo -ne "\e[6 q"
+end
