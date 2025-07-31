@@ -10,6 +10,8 @@ set -gx pure_prompt_symbol '>'
 set -gx LESSHISTFILE '-'
 set -gx FZF_DEFAULT_OPTS_FILE "$XDG_CONFIG_HOME/fzf/fzfrc"
 set -gx TLRC_CONFIG "$XDG_CONFIG_HOME/tldr/config.toml"
+set -gx _ZO_DATA_DIR "$XDG_DATA_HOME/zoxide"
+set -gx PNPM_HOME "$XDG_DATA_HOME/pnpm"
 
 abbr bis 'brew install'
 abbr bus 'brew uninstall'
@@ -58,6 +60,3 @@ fzf --fish | source
 fnm env --shell fish | source
 glab completion -s fish | source
 
-function set_bar_cursor --on-event fish_postexec
-  echo -ne "\e[6 q"
-end
