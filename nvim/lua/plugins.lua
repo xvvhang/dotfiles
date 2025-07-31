@@ -18,13 +18,14 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
   {
     'echasnovski/mini.nvim',
+    dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' },
     version = false,
     config = function()
       require('mini.ai').setup()
       require('mini.comment').setup({
         options = {
           custom_commentstring = function()
-            return require('ts_context_commentstring').calculate_commentstring () or vim.bo.commentstring
+            return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
           end
         }
       })
@@ -193,6 +194,10 @@ local plugins = {
         end)
       end
     },
+    event = {
+      'BufReadPre',
+      'BufNewFile',
+    },
     cmd = { 'Gitsigns' },
     keys = {
       { 'gu', ':Gitsigns reset_hunk<CR>' },
@@ -202,27 +207,37 @@ local plugins = {
   },
   {
     'nvim-treesitter/nvim-treesitter',
-    dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' },
-    build = function() vim.cmd('TSUpdate') end,
+    branch = 'master',
+    build = ':TSUpdate',
     opts = {
       ensure_installed = { "lua" },
       auto_install = true,
       highlight = { enable = true },
       indent = { enable = true },
       fold = { enable = true }
-    }
+    },
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end,
+    lazy = false,
+    priority = 200,
+  },
+  {
+    'williamboman/mason.nvim',
+    opts = {
+      ui = {
+        border = 'rounded',
+        backdrop = 100,
+        width = 0.7,
+        height = 0.8
+      }
+    },
+    cmd = { 'Mason' },
   },
   {
     'neovim/nvim-lspconfig',
     dependencies = { 'williamboman/mason.nvim' },
     config = function()
-      require('mason').setup({
-        ui = {
-          border = 'none',
-          width = 1,
-          height = 1
-        }
-      })
       local vue_language_server_path = vim.fn.expand '$MASON/packages' ..
       '/vue-language-server' .. '/node_modules/@vue/language-server'
 
@@ -333,7 +348,6 @@ local plugins = {
         layout = 'horizontal',
         border = 'rounded',
         width = 0.5,
-        height = 0.4,
         title = ' Copilot Chat '
       },
       show_help = false
@@ -422,13 +436,6 @@ local plugins = {
     priority = 100
   },
   {
-    'zk-org/zk-nvim',
-    cmd = { 'ZkNotes' },
-    keys = {
-      { '<leader>z', ':ZkNotes<CR>' }
-    }
-  },
-  {
     'folke/tokyonight.nvim',
     lazy = false,
     priority = 1000,
@@ -441,7 +448,7 @@ local plugins = {
 
 require('lazy').setup(plugins, {
   ui = {
-    size = { width = 0.5, height = 0.8 },
+    size = { width = 0.7, height = 0.8 },
     border = 'rounded',
     title = ' Lazy ',
     title_pos = 'left',
