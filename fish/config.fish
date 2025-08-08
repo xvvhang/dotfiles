@@ -47,9 +47,10 @@ abbr tls 'tmux list-sessions'
 abbr tks 'tmux kill-session -t'
 abbr tas 'tmux attach -t'
 abbr tka 'tmux kill-server'
+abbr ghcs 'gh copilot suggest'
+abbr ghce 'gh copilot explain'
 
 alias n='nvim'
-alias e='emacs'
 alias g='lazygit'
 
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$XDG_CONFIG_HOME'
