@@ -181,7 +181,7 @@ deps.later(function()
   require('mini.trailspace').setup()
 end)
 
-deps.later(function()
+deps.now(function()
   require('fzf-lua').setup({
     winopts = {
       height = 0.8,
@@ -208,7 +208,7 @@ deps.later(function()
   require('fzf-lua').register_ui_select()
 end)
 
-deps.later(function()
+deps.now(function()
   require('yazi').setup({
     floating_window_scaling_factor = 0.8,
     open_file_in_horizontal_split = '<C-s>'
