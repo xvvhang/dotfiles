@@ -17,3 +17,28 @@ vim.keymap.del('n', 'gra')
 vim.keymap.del('n', 'grr')
 vim.keymap.del('n', 'gri')
 vim.keymap.del('n', 'gO')
+
+vim.keymap.set('n', '<leader>b', ':FzfLua buffers<CR>')
+vim.keymap.set('n', '<leader>f', ':FzfLua files<CR>')
+vim.keymap.set('n', '<leader>s', ':FzfLua live_grep<CR>')
+vim.keymap.set('n', '<leader>g', ':FzfLua git_status<CR>')
+vim.keymap.set('n', '<leader>h', ':FzfLua git_hunks<CR>')
+vim.keymap.set('n', '<leader>d', ':FzfLua lsp_workspace_diagnostics<CR>')
+vim.keymap.set('n', '<leader>.', ':FzfLua resume<CR>')
+vim.keymap.set('n', '<leader>/', ':FzfLua<CR>')
+vim.keymap.set('n', '<leader>o', ':Yazi<CR>')
+vim.keymap.set('n', ']h', function()
+  if vim.wo.diff then
+    vim.cmd.normal({']h', bang = true})
+  else
+    require('gitsigns').nav_hunk('next')
+  end
+end)
+vim.keymap.set('n', '[h', function()
+  if vim.wo.diff then
+    vim.cmd.normal({'[h', bang = true})
+  else
+    require('gitsigns').nav_hunk('previous')
+  end
+end)
+vim.keymap.set('n', '<leader>k', ':CopilotChatToggle<CR>')
