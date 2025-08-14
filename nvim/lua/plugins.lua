@@ -1,4 +1,4 @@
-                                            -- Put this at the top of 'init.lua'
+-- Put this at the top of 'init.lua'
 local path_package = vim.fn.stdpath('data') .. '/site'
 local mini_path = path_package .. '/pack/deps/start/mini.nvim'
 if not vim.loop.fs_stat(mini_path) then
@@ -37,7 +37,7 @@ deps.add({
 
 deps.add({
   source = 'nvim-treesitter/nvim-treesitter',
-  checkout = 'main',
+  checkout = 'master',
   hooks = { post_checkout = function() vim.cmd('TSUpdate') end }
 })
 
@@ -148,11 +148,14 @@ end)
 deps.later(function()
   require('mini.deps').setup()
   require('mini.ai').setup()
+  require('ts_context_commentstring').setup {
+    enable_autocmd = false,
+  }
   require('mini.comment').setup({
     options = {
       custom_commentstring = function()
-        return require('ts_context_commentstring').calculate_commentstring()
-      end,
+        return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
+      end
     }
   })
   require('mini.pairs').setup()
@@ -227,6 +230,14 @@ deps.later(function()
 end)
 
 deps.later(function()
+  require('nvim-treesitter.configs').setup({
+    auto_install = true,
+    highlight = { enable = true },
+    incremental_selection = { enable = true },
+  })
+end)
+
+deps.later(function()
   require('mason').setup({
     ui = {
       border = 'rounded',
@@ -294,7 +305,6 @@ deps.later(function()
   vim.lsp.enable({
     'cssls',
     'emmet_language_server',
-    'gopls',
     'html',
     'jsonls',
     'lua_ls',
