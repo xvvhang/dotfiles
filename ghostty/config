@@ -12,4 +12,4 @@ window-padding-color = background
 shell-integration-features = no-cursor
 mouse-hide-while-typing	= true
 macos-titlebar-style = transparent
-config-file = theme
+config-file = current
