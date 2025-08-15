@@ -71,8 +71,12 @@ deps.add({
   source = 'folke/tokyonight.nvim'
 })
 
+deps.add({
+  source = 'ellisonleao/gruvbox.nvim'
+})
+
 deps.now(function()
-  vim.cmd('colorscheme tokyonight-night')
+  vim.cmd('colorscheme gruvbox')
 end)
 
 deps.now(function()
@@ -166,12 +170,14 @@ deps.later(function()
   require('mini.jump').setup()
   require('mini.jump2d').setup()
   require('mini.cursorword').setup()
-  require('mini.hipatterns').setup({
+  local hipatterns = require('mini.hipatterns')
+  hipatterns.setup({
     highlighters = {
       fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
       hack  = { pattern = '%f[%w]()HACK()%f[%W]',  group = 'MiniHipatternsHack'  },
       todo  = { pattern = '%f[%w]()TODO()%f[%W]',  group = 'MiniHipatternsTodo'  },
       note  = { pattern = '%f[%w]()NOTE()%f[%W]',  group = 'MiniHipatternsNote'  },
+      hex_color = hipatterns.gen_highlighter.hex_color()
     }
   })
   require('mini.indentscope').setup({
@@ -186,26 +192,17 @@ end)
 
 deps.now(function()
   require('fzf-lua').setup({
+    'borderless-full',
     winopts = {
       height = 0.8,
       width = 0.6,
       row = 0.5,
       backdrop = 100,
-      title_pos = 'left',
+      title_pos = 'center',
       title_flags = false,
       preview = {
-        title_pos = 'left',
-        horizontal = 'right:65%',
-        scrollbar = false,
+        title_pos = 'center'
       }
-    },
-    hls = {
-      normal = 'NormalFloat',
-      border = 'FloatBorder',
-      title = 'FloatTitle',
-      preview_normal = 'NormalFloat',
-      preview_border = 'FloatBorder',
-      preview_title = 'FloatTitle',
     }
   })
   require('fzf-lua').register_ui_select()
@@ -214,6 +211,7 @@ end)
 deps.now(function()
   require('yazi').setup({
     floating_window_scaling_factor = 0.8,
+    yazi_floating_window_border = 'none',
     open_file_in_horizontal_split = '<C-s>'
   })
   vim.api.nvim_set_hl(0, 'YaziFloat', { link = 'NormalFloat' })
@@ -240,7 +238,7 @@ end)
 deps.later(function()
   require('mason').setup({
     ui = {
-      border = 'rounded',
+      border = 'none',
       backdrop = 100,
       width = 0.6,
       height = 0.8
