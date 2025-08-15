@@ -75,9 +75,7 @@ deps.add({
   source = 'ellisonleao/gruvbox.nvim'
 })
 
-deps.now(function()
-  vim.cmd('colorscheme gruvbox')
-end)
+require('themes.current')
 
 deps.now(function()
   require('lualine').setup({
@@ -306,7 +304,6 @@ deps.later(function()
     'html',
     'jsonls',
     'lua_ls',
-    'pyright',
     'tailwindcss',
     'vue_ls',
     'vtsls',
