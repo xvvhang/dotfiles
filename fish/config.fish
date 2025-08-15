@@ -13,6 +13,12 @@ set -gx TLRC_CONFIG "$XDG_CONFIG_HOME/tldr/config.toml"
 set -gx _ZO_DATA_DIR "$XDG_DATA_HOME/zoxide"
 set -gx PNPM_HOME "$XDG_DATA_HOME/pnpm"
 
+if test (uname -s) = Linux
+  set -gx GTK_IM_MODULE fcitx
+  set -gx QT_IM_MODULE fcitx
+  set -gx XMODIFIERS @im=fcitx
+end
+
 function set-theme
   set themes gruvbox tokyonight
   set selected_theme (printf "%s\n" $themes | fzf --prompt="Select a theme: ")
