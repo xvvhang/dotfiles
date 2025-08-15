@@ -68,6 +68,10 @@ deps.add({
 })
 
 deps.add({
+  source = 'mrjones2014/smart-splits.nvim'
+})
+
+deps.add({
   source = 'folke/tokyonight.nvim'
 })
 
