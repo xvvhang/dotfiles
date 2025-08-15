@@ -321,7 +321,7 @@ deps.later(function()
         }
       },
       menu = {
-        border = 'rounded',
+        border = 'none',
         draw = {
           gap = 2,
           treesitter = { 'lsp' },
@@ -334,12 +334,12 @@ deps.later(function()
       },
       documentation = {
         auto_show = true,
-        window = { border = 'rounded' }
+        window = { border = 'none' }
       }
     },
     signature = {
       enabled = true,
-      window = { border = 'rounded' }
+      window = { border = 'none' }
     },
     keymap = { preset = 'enter' },
     sources = {
@@ -365,7 +365,7 @@ deps.later(function()
     },
     window = {
       layout = 'horizontal',
-      border = 'rounded',
+      border = 'none',
       width = 0.5,
       title = ' Copilot Chat '
     },
