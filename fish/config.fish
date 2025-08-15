@@ -50,13 +50,6 @@ function set-theme
   end
 end
 
-abbr bis 'brew install'
-abbr bus 'brew uninstall'
-abbr bup 'brew update'
-abbr bug 'brew upgrade'
-abbr bss 'brew search'
-abbr bcl 'brew cleanup'
-abbr blv 'brew leaves'
 abbr gin 'git init'
 abbr gcl 'git clone'
 abbr gst 'git status'
@@ -86,6 +79,16 @@ abbr tas 'tmux attach -t'
 abbr tka 'tmux kill-server'
 abbr ghcs 'gh copilot suggest'
 abbr ghce 'gh copilot explain'
+
+if test (uname -s) = Darwin
+  abbr bis 'brew install'
+  abbr bus 'brew uninstall'
+  abbr bup 'brew update'
+  abbr bug 'brew upgrade'
+  abbr bss 'brew search'
+  abbr bcl 'brew cleanup'
+  abbr blv 'brew leaves'
+end
 
 alias n='nvim'
 alias g='lazygit'
