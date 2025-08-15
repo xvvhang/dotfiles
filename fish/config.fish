@@ -92,5 +92,4 @@ alias lazydot='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$XDG_CONFIG_HOME'
 zoxide init fish | source
 fzf --fish | source
 fnm env --shell fish | source
-glab completion -s fish | source
 
