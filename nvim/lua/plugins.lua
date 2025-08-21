@@ -88,6 +88,10 @@ deps.add({
 })
 
 deps.add({
+  source = 'rose-pine/neovim'
+})
+
+deps.add({
   source = 'folke/tokyonight.nvim'
 })
 
