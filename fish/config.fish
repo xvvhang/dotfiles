@@ -11,6 +11,7 @@ set -gx LESSHISTFILE '-'
 set -gx FZF_DEFAULT_OPTS_FILE "$XDG_CONFIG_HOME/fzf/fzfrc"
 set -gx TLRC_CONFIG "$XDG_CONFIG_HOME/tldr/config.toml"
 set -gx _ZO_DATA_DIR "$XDG_DATA_HOME/zoxide"
+set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/npmrc"
 set -gx PNPM_HOME "$XDG_DATA_HOME/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
