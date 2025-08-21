@@ -24,7 +24,7 @@ if test (uname -s) = Linux
 end
 
 function set-theme
-  set themes gruvbox kanagawa nightfox tokyonight
+  set themes gruvbox kanagawa monokaipro nightfox tokyonight
   set selected_theme (printf "%s\n" $themes | fzf --prompt="Select a theme: " --no-preview)
 
   if test -z "$selected_theme"

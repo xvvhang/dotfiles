@@ -80,6 +80,10 @@ deps.add({
 })
 
 deps.add({
+  source = 'loctvl842/monokai-pro.nvim'
+})
+
+deps.add({
   source = 'EdenEast/nightfox.nvim'
 })
 
