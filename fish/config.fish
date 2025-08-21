@@ -12,6 +12,15 @@ set -gx FZF_DEFAULT_OPTS_FILE "$XDG_CONFIG_HOME/fzf/fzfrc"
 set -gx TLRC_CONFIG "$XDG_CONFIG_HOME/tldr/config.toml"
 set -gx _ZO_DATA_DIR "$XDG_DATA_HOME/zoxide"
 set -gx PNPM_HOME "$XDG_DATA_HOME/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+
+if test (uname -s) = Linux
+  set -gx GTK_IM_MODULE fcitx
+  set -gx QT_IM_MODULE fcitx
+  set -gx XMODIFIERS @im=fcitx
+end
 
 function set-theme
   set themes gruvbox kanagawa tokyonight
@@ -44,13 +53,6 @@ function set-theme
   end
 end
 
-abbr bis 'brew install'
-abbr bus 'brew uninstall'
-abbr bup 'brew update'
-abbr bug 'brew upgrade'
-abbr bss 'brew search'
-abbr bcl 'brew cleanup'
-abbr blv 'brew leaves'
 abbr gin 'git init'
 abbr gcl 'git clone'
 abbr gst 'git status'
@@ -81,6 +83,16 @@ abbr tka 'tmux kill-server'
 abbr ghcs 'gh copilot suggest'
 abbr ghce 'gh copilot explain'
 
+if test (uname -s) = Darwin
+  abbr bis 'brew install'
+  abbr bus 'brew uninstall'
+  abbr bup 'brew update'
+  abbr bug 'brew upgrade'
+  abbr bss 'brew search'
+  abbr bcl 'brew cleanup'
+  abbr blv 'brew leaves'
+end
+
 alias n='nvim'
 alias g='lazygit'
 
@@ -92,5 +104,4 @@ alias lazydot='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$XDG_CONFIG_HOME'
 zoxide init fish | source
 fzf --fish | source
 fnm env --shell fish | source
-glab completion -s fish | source
 
