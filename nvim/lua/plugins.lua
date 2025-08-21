@@ -80,6 +80,10 @@ deps.add({
 })
 
 deps.add({
+  source = 'EdenEast/nightfox.nvim'
+})
+
+deps.add({
   source = 'folke/tokyonight.nvim'
 })
 
