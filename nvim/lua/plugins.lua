@@ -72,11 +72,15 @@ deps.add({
 })
 
 deps.add({
-  source = 'folke/tokyonight.nvim'
+  source = 'ellisonleao/gruvbox.nvim'
 })
 
 deps.add({
-  source = 'ellisonleao/gruvbox.nvim'
+  source = 'rebelot/kanagawa.nvim'
+})
+
+deps.add({
+  source = 'folke/tokyonight.nvim'
 })
 
 require('themes.current')
@@ -200,12 +204,23 @@ deps.now(function()
       width = 0.6,
       row = 0.5,
       backdrop = 100,
-      title_pos = 'center',
       title_flags = false,
       preview = {
-        title_pos = 'center'
+        scrollbar = false
       }
-    }
+    },
+    hls = {
+      title          = 'IncSearch',
+      border         = 'NormalFloat',
+      preview_title  = 'IncSearch',
+      preview_border = 'NormalFloat',
+    },
+    fzf_colors = {
+      ["gutter"] = { "bg", "NormalFloat" },
+      ["bg"]     = { "bg", "NormalFloat" },
+      ["bg+"]    = { "bg", "NormalFloat" },
+      ["fg+"]    = { "fg", "NormalFloat" },
+    },
   })
   require('fzf-lua').register_ui_select()
 end)

@@ -14,8 +14,8 @@ set -gx _ZO_DATA_DIR "$XDG_DATA_HOME/zoxide"
 set -gx PNPM_HOME "$XDG_DATA_HOME/pnpm"
 
 function set-theme
-  set themes gruvbox tokyonight
-  set selected_theme (printf "%s\n" $themes | fzf --prompt="Select a theme: ")
+  set themes gruvbox kanagawa tokyonight
+  set selected_theme (printf "%s\n" $themes | fzf --prompt="Select a theme: " --no-preview)
 
   if test -z "$selected_theme"
     echo "No theme selected. Exiting."
