@@ -249,6 +249,19 @@ deps.later(function()
   local vue_language_server_path = vim.fn.expand '$MASON/packages' ..
   '/vue-language-server' .. '/node_modules/@vue/language-server'
 
+  vim.lsp.config['emmet_language_server'] = {
+    filetypes = {
+      "css",
+      "html",
+      "javascriptreact",
+      "typescriptreact",
+      "less",
+      "sass",
+      "scss",
+      "astro",
+      "vue"
+    }
+  }
   vim.lsp.config['lua_ls'] = {
     settings = {
       Lua = {
@@ -303,6 +316,7 @@ deps.later(function()
     }
   }
   vim.lsp.enable({
+    'astro',
     'cssls',
     'emmet_language_server',
     'html',
