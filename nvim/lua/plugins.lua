@@ -32,10 +32,6 @@ deps.add({
 })
 
 deps.add({
-  source = 'lewis6991/gitsigns.nvim'
-})
-
-deps.add({
   source = 'nvim-treesitter/nvim-treesitter',
   checkout = 'master',
   hooks = { post_checkout = function() vim.cmd('TSUpdate') end }

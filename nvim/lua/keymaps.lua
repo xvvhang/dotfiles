@@ -35,18 +35,4 @@ vim.keymap.set('n', '<leader>d', ':FzfLua lsp_workspace_diagnostics<CR>')
 vim.keymap.set('n', '<leader>.', ':FzfLua resume<CR>')
 vim.keymap.set('n', '<leader>/', ':FzfLua<CR>')
 vim.keymap.set('n', '<leader>o', ':Yazi<CR>')
-vim.keymap.set('n', ']h', function()
-  if vim.wo.diff then
-    vim.cmd.normal({']h', bang = true})
-  else
-    require('gitsigns').nav_hunk('next')
-  end
-end)
-vim.keymap.set('n', '[h', function()
-  if vim.wo.diff then
-    vim.cmd.normal({'[h', bang = true})
-  else
-    require('gitsigns').nav_hunk('previous')
-  end
-end)
 vim.keymap.set('n', '<leader>k', ':CopilotChatToggle<CR>')
