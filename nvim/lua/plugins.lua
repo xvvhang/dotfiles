@@ -160,12 +160,11 @@ deps.now(function()
   })
 end)
 
-deps.later(function()
-  require('mini.deps').setup()
+deps.now(function()
+  require('ts_context_commentstring').setup({ enable_autocmd = false })
+
+  -- Text Editing
   require('mini.ai').setup()
-  require('ts_context_commentstring').setup {
-    enable_autocmd = false,
-  }
   require('mini.comment').setup({
     options = {
       custom_commentstring = function()
@@ -176,19 +175,38 @@ deps.later(function()
   require('mini.pairs').setup()
   require('mini.splitjoin').setup()
   require('mini.surround').setup()
+
+  -- General Workflow
   require('mini.bracketed').setup()
   require('mini.bufremove').setup()
+  require('mini.deps').setup()
+  require('mini.diff').setup({
+    view = {
+      style = 'sign',
+      signs = {
+        add = '┃',
+        change = '┃',
+        delete = '_'
+      }
+    },
+    mappings = {
+      apply = 'gs',
+      reset = 'gu',
+      textobject = 'h'
+    }
+  })
   require('mini.jump').setup()
   require('mini.jump2d').setup()
+
+  -- Appearance
   require('mini.cursorword').setup()
-  local hipatterns = require('mini.hipatterns')
-  hipatterns.setup({
+  require('mini.hipatterns').setup({
     highlighters = {
       fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
       hack  = { pattern = '%f[%w]()HACK()%f[%W]',  group = 'MiniHipatternsHack'  },
       todo  = { pattern = '%f[%w]()TODO()%f[%W]',  group = 'MiniHipatternsTodo'  },
       note  = { pattern = '%f[%w]()NOTE()%f[%W]',  group = 'MiniHipatternsNote'  },
-      hex_color = hipatterns.gen_highlighter.hex_color()
+      hex_color = require('mini.hipatterns').gen_highlighter.hex_color()
     }
   })
   require('mini.indentscope').setup({
@@ -232,9 +250,11 @@ end)
 
 deps.now(function()
   require('yazi').setup({
-    floating_window_scaling_factor = 0.8,
+    floating_window_scaling_factor = 0.85,
     yazi_floating_window_border = 'none',
-    open_file_in_horizontal_split = '<C-s>'
+    keymaps = {
+      open_file_in_horizontal_split = '<C-s>'
+    }
   })
   vim.api.nvim_set_hl(0, 'YaziFloat', { link = 'NormalFloat' })
   vim.api.nvim_set_hl(0, 'YaziFloatBorder', { link = 'FloatBorder' })
