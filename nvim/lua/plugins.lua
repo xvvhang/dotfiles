@@ -43,28 +43,33 @@ deps.add({
 })
 
 deps.add({
-  source = 'saghen/blink.cmp',
-  checkout = 'v1.6.0',
-  depends = { 'rafamadriz/friendly-snippets' }
+  source = 'zbirenbaum/copilot.lua'
 })
 
 deps.add({
-  source = 'CopilotC-Nvim/CopilotChat.nvim',
+  source = 'saghen/blink.cmp',
+  checkout = 'v1.6.0',
   depends = {
-    'zbirenbaum/copilot.lua',
+    'rafamadriz/friendly-snippets',
+    'fang2hou/blink-copilot'
+  }
+})
+
+deps.add({
+  source = 'olimorris/codecompanion.nvim',
+  depends = {
     'nvim-lua/plenary.nvim',
-    'AndreM222/copilot-lualine'
-  },
-  hooks = { post_checkout = function() vim.cmd('make tiktoken') end }
+    'nvim-treesitter/nvim-treesitter',
+  }
+})
+
+deps.add({
+  source = 'MeanderingProgrammer/render-markdown.nvim'
 })
 
 deps.add({
   source = 'nvim-lualine/lualine.nvim',
   depends = { 'nvim-tree/nvim-web-devicons' }
-})
-
-deps.add({
-  source = 'mrjones2014/smart-splits.nvim'
 })
 
 deps.add({
@@ -142,14 +147,6 @@ deps.now(function()
         }
       },
       lualine_x = {
-        {
-          'copilot',
-          symbols = {
-            spinners = 'dots'
-          },
-          show_colors = false,
-          show_loading = true
-        },
         'searchcount',
         'selectioncount',
         {
@@ -244,15 +241,6 @@ deps.now(function()
 end)
 
 deps.later(function()
-  require('gitsigns').setup({
-    signcolumn = false,
-    numhl = true,
-    linehl = true,
-    current_line_blame = true
-  })
-end)
-
-deps.later(function()
   require('nvim-treesitter.configs').setup({
     auto_install = true,
     highlight = { enable = true },
@@ -269,6 +257,7 @@ deps.later(function()
       height = 0.8
     }
   })
+
   local vue_language_server_path = vim.fn.expand '$MASON/packages' ..
   '/vue-language-server' .. '/node_modules/@vue/language-server'
 
@@ -353,6 +342,13 @@ deps.later(function()
 end)
 
 deps.later(function()
+  require('copilot').setup({
+    panel = { enabled = false },
+    suggestion = { enabled = false }
+  })
+end)
+
+deps.later(function()
   require('blink.cmp').setup({
     completion = {
       list = {
@@ -364,7 +360,7 @@ deps.later(function()
       menu = {
         border = 'none',
         draw = {
-          gap = 2,
+          gap = 1,
           treesitter = { 'lsp' },
           columns = {
             { "kind" },
@@ -382,34 +378,41 @@ deps.later(function()
       enabled = true,
       window = { border = 'none' }
     },
-    keymap = { preset = 'enter' },
+    keymap = {
+      preset = 'default',
+      ['<CR>'] = { 'accept', 'fallback' },
+    },
     sources = {
       default = {
+        'copilot',
         'lsp',
         'path',
         'snippets',
-        'buffer',
+        'buffer'
+      },
+      providers = {
+        copilot = {
+          name = 'copilot',
+          module = 'blink-copilot',
+          score_offset = 100,
+          async = true
+        },
+      },
+      per_filetype = {
+        codecompanion = { 'codecompanion' }
       }
     }
   })
 end)
 
 deps.later(function()
-  require('CopilotChat').setup({
-    keymaps = {
-      accept = '<TAB>',
-      accept_word = '<C-Tab>',
-      accept_line = '<C-S-Tab>',
-      next = '<C-n>',
-      prev = '<C-p>',
-      close = '<C-c>'
-    },
-    window = {
-      layout = 'horizontal',
-      border = 'none',
-      width = 0.5,
-      title = ' Copilot Chat '
-    },
-    show_help = false
+  require('codecompanion').setup()
+end)
+
+deps.later(function()
+  require('render-markdown').setup({
+    file_types = { 'markdown', 'codecompanion' },
+    completions = { blink = { enabled = true } },
   })
 end)
+
