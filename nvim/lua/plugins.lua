@@ -1,4 +1,4 @@
--- -- Bootstrap lazy.nvim
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -195,7 +195,7 @@ local plugins = {
     'mikavilpas/yazi.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {
-      floating_window_scaling_factor = 0.85,
+      floating_window_scaling_factor = 0.8,
       yazi_floating_window_border = 'none',
       keymaps = {
         open_file_in_horizontal_split = '<C-s>'
@@ -332,6 +332,7 @@ local plugins = {
   },
   {
     'saghen/blink.cmp',
+    version = '1.*',
     dependencies = {
       'rafamadriz/friendly-snippets',
       'fang2hou/blink-copilot'
@@ -398,11 +399,15 @@ local plugins = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
     },
+    config = true,
     cmd = {
       'CodeCompanion',
       'CodeCompanionAction',
       'CodeCompanionChat',
       'CodeCompanionCmd'
+    },
+    keys = {
+      { '<leader>l', ':CodeCompanionChat<CR>' }
     }
   },
   {
