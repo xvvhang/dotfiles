@@ -16,6 +16,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+  { import = 'themes.current' },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -417,12 +418,7 @@ local plugins = {
       completions = { blink = { enabled = true } },
     },
     ft = { 'markdown', 'codecompanion' }
-  },
-  { 'ellisonleao/gruvbox.nvim', lazy = true },
-  { 'rebelot/kanagawa.nvim', lazy = true },
-  { 'loctvl842/monokai-pro.nvim', lazy = true },
-  { 'EdenEast/nightfox.nvim', lazy = true },
-  { 'folke/tokyonight.nvim', lazy = true }
+  }
 }
 
 require("lazy").setup({
@@ -431,4 +427,3 @@ require("lazy").setup({
   checker = { enabled = true }
 })
 
-require('themes.current')
