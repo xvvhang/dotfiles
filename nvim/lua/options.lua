@@ -20,7 +20,7 @@ vim.opt.swapfile = false
 vim.opt.tabstop = 2
 vim.opt.termguicolors = true
 vim.opt.timeoutlen = 500
-vim.opt.winborder = "rounded"
+vim.opt.winborder = "none"
 vim.opt.wrap = false
 
 vim.diagnostic.config({
