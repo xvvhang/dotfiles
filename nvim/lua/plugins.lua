@@ -225,7 +225,7 @@ local plugins = {
     event = { 'BufEnter' }
   },
   {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     opts = {
       ui = {
         border = 'none',
@@ -234,7 +234,11 @@ local plugins = {
         height = 0.8
       }
     },
-    cmd = { 'Mason' }
+    config = function(_, opts)
+      require('mason').setup(opts)
+    end,
+    cmd = { 'Mason' },
+    event = { 'BufEnter' }
   },
   {
     'neovim/nvim-lspconfig',
@@ -284,7 +288,8 @@ local plugins = {
                 payload,
               },
             }, { bufnr = context.bufnr }, function(_, r)
-              local response_data = { { id, r.body } }
+              local response = r and r.body
+              local response_data = { { id, response } }
               ---@diagnostic disable-next-line: param-type-mismatch
               client:notify('tsserver/response', response_data)
             end)
