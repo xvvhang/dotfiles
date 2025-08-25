@@ -115,7 +115,7 @@ local plugins = {
         mappings = {
           apply = 'gs',
           reset = 'gu',
-          textobject = 'h'
+          textobject = 'gh'
         }
       })
       require('mini.jump').setup()
