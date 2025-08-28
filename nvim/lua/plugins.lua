@@ -195,6 +195,7 @@ local plugins = {
   },
   {
     'mikavilpas/yazi.nvim',
+    version = '11.10.2',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {
       floating_window_scaling_factor = 0.8,
