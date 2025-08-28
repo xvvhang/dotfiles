@@ -40,3 +40,4 @@ vim.keymap.set('n', '<leader>o', ':Yazi<CR>')
 vim.keymap.set('n', '<leader>l', ':CodeCompanionChat<CR>')
 
 vim.keymap.set('n', 'gho', function() MiniDiff.toggle_overlay() end)
+vim.keymap.set('n', 'gbl', function() MiniGit.show_at_cursor({ split = 'horizontal' }) end)
