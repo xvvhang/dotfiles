@@ -322,6 +322,7 @@ local plugins = {
         'html',
         'jsonls',
         'lua_ls',
+        'svelte',
         'tailwindcss',
         'vue_ls',
         'vtsls',
