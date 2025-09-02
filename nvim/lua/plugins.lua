@@ -195,7 +195,7 @@ local plugins = {
   },
   {
     'mikavilpas/yazi.nvim',
-    version = '11.10.2',
+    version = "v11.10.2",
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {
       floating_window_scaling_factor = 0.8,
@@ -210,7 +210,7 @@ local plugins = {
     end,
     cmd = { 'Yazi' },
     keys = {
-      { '<leader>o', ':Yazi<CR>' }
+      { '<leader>y', ':Yazi<CR>' }
     }
   },
   {

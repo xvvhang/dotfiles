@@ -35,7 +35,7 @@ vim.keymap.set('n', 'gi', ':FzfLua lsp_implementations<CR>')
 vim.keymap.set('n', 'gt', ':FzfLua lsp_typedefs<CR>')
 vim.keymap.set('n', 'go', ':FzfLua lsp_document_symbols<CR>')
 
-vim.keymap.set('n', '<leader>o', ':Yazi<CR>')
+vim.keymap.set('n', '<leader>y', ':Yazi<CR>')
 
 vim.keymap.set('n', '<leader>l', ':CodeCompanionChat<CR>')
 
