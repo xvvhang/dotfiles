@@ -426,6 +426,40 @@ local plugins = {
       completions = { blink = { enabled = true } },
     },
     ft = { 'markdown', 'codecompanion' }
+  },
+  {
+    'zk-org/zk-nvim',
+    config = function()
+      require('zk').setup({
+        picker = 'fzf_lua',
+        lsp = {
+          config = {
+            name = 'zk',
+            cmd = { 'zk', 'lsp' },
+            filetypes = { 'markdown' },
+          },
+          auto_attach = {
+            enabled = true
+          }
+        }
+      })
+    end,
+    cmd = {
+      'ZkNew',
+      'ZkCd',
+      'ZkNotes',
+      'ZkBuffers',
+      'ZkBacklinks',
+      'ZkLinks',
+      'ZkInsertLink',
+      'ZkMatch',
+      'ZkTags'
+    },
+    keys = {
+      { '<leader>kn', ':ZkNew { title = vim.fn.input("Title: ") }<CR>' },
+      { '<leader>kk', ':ZkNotes<CR>' },
+      { '<leader>kl', ':ZkBacklinks<CR>' },
+    }
   }
 }
 
