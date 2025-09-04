@@ -195,7 +195,6 @@ local plugins = {
   },
   {
     'mikavilpas/yazi.nvim',
-    version = "v11.10.2",
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {
       floating_window_scaling_factor = 0.8,
@@ -320,6 +319,7 @@ local plugins = {
         'cssls',
         'emmet_language_server',
         'html',
+        'gopls',
         'jsonls',
         'lua_ls',
         'svelte',
