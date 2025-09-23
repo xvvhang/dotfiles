@@ -42,10 +42,9 @@ local plugins = {
           {
             'filename',
             path = 1,
-            padding = { left = 0, right = 1 },
             symbols = {
-              unnamed = ' [No Name]',
-              newfile = ' [New]',
+              unnamed = '[No Name]',
+              newfile = '[New]',
             }
           },
           {
@@ -70,10 +69,58 @@ local plugins = {
         lualine_x = {
           'searchcount',
           'selectioncount',
+          'location',
+          'progress'
+        },
+        lualine_y = {},
+        lualine_z = {}
+      },
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {
           {
-            'location',
+            'branch',
+            icon = { '', color = { fg='#f14c28' } }
+          },
+          {
+            'filetype',
+            colored = true,
+            icon_only = true,
             padding = { left = 1, right = 0 }
+          },
+          {
+            'filename',
+            path = 1,
+            symbols = {
+              unnamed = '[No Name]',
+              newfile = '[New]',
+            }
+          },
+          {
+            'diagnostics',
+            sources = { 'nvim_lsp' },
+            symbols = {
+              error = ' ',
+              warn = ' ',
+              info = ' ',
+              hint = ' '
+            }
+          },
+          {
+            'diff',
+            symbols = {
+              added = ' ',
+              modified = ' ',
+              removed = ' '
+            }
           }
+        },
+        lualine_x = {
+          'searchcount',
+          'selectioncount',
+          'location',
+          'progress'
         },
         lualine_y = {},
         lualine_z = {}
