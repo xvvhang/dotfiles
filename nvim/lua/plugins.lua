@@ -74,56 +74,6 @@ local plugins = {
         },
         lualine_y = {},
         lualine_z = {}
-      },
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = {
-          {
-            'branch',
-            icon = { '', color = { fg='#f14c28' } }
-          },
-          {
-            'filetype',
-            colored = true,
-            icon_only = true,
-            padding = { left = 1, right = 0 }
-          },
-          {
-            'filename',
-            path = 1,
-            symbols = {
-              unnamed = '[No Name]',
-              newfile = '[New]',
-            }
-          },
-          {
-            'diagnostics',
-            sources = { 'nvim_lsp' },
-            symbols = {
-              error = ' ',
-              warn = ' ',
-              info = ' ',
-              hint = ' '
-            }
-          },
-          {
-            'diff',
-            symbols = {
-              added = ' ',
-              modified = ' ',
-              removed = ' '
-            }
-          }
-        },
-        lualine_x = {
-          'searchcount',
-          'selectioncount',
-          'location',
-          'progress'
-        },
-        lualine_y = {},
-        lualine_z = {}
       }
     }
   },
@@ -473,40 +423,6 @@ local plugins = {
       completions = { blink = { enabled = true } },
     },
     ft = { 'markdown', 'codecompanion' }
-  },
-  {
-    'zk-org/zk-nvim',
-    config = function()
-      require('zk').setup({
-        picker = 'fzf_lua',
-        lsp = {
-          config = {
-            name = 'zk',
-            cmd = { 'zk', 'lsp' },
-            filetypes = { 'markdown' },
-          },
-          auto_attach = {
-            enabled = true
-          }
-        }
-      })
-    end,
-    cmd = {
-      'ZkNew',
-      'ZkCd',
-      'ZkNotes',
-      'ZkBuffers',
-      'ZkBacklinks',
-      'ZkLinks',
-      'ZkInsertLink',
-      'ZkMatch',
-      'ZkTags'
-    },
-    keys = {
-      { '<leader>kn', ':ZkNew { title = vim.fn.input("Title: ") }<CR>' },
-      { '<leader>kk', ':ZkNotes<CR>' },
-      { '<leader>kl', ':ZkBacklinks<CR>' },
-    }
   }
 }
 

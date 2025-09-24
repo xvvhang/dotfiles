@@ -41,4 +41,3 @@ vim.diagnostic.config({
 
 vim.g.loaded_node_provider = 0
 
-vim.api.nvim_set_hl(0, "MsgArea", { link = "StatusLine" })
