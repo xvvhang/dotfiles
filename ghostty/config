@@ -1,5 +1,5 @@
 font-family = JetBrains Maple Mono
-font-size = 14
+font-size = 13
 font-thicken = true
 font-thicken-strength = 128
 cursor-style = bar
@@ -16,3 +16,4 @@ macos-option-as-alt = true
 config-file = current
 window-theme = auto
 title = " "
+shell-integration-features = ssh-terminfo
