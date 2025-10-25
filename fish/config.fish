@@ -25,11 +25,22 @@ end
 
 function set-theme
   set themes \
+    github-dark \
+    github-dark-colorblind \
+    github-dark-dimmed \
+    github-light \
+    github-light-colorblind \
     kanagawa-dragon \
+    kanagawa-lotus \
     kanagawa-wave \
-    nightfox-nightfox \
-    nightfox-nordfox \
-    nightfox-terafox \
+    nightfox-carbon \
+    nightfox-dawn \
+    nightfox-day \
+    nightfox-dusk \
+    nightfox-night \
+    nightfox-nord \
+    nightfox-tera \
+    tokyonight-day \
     tokyonight-moon \
     tokyonight-night \
     tokyonight-storm
@@ -112,5 +123,3 @@ alias lazydot='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$XDG_CONFIG_HOME'
 
 zoxide init fish | source
 fzf --fish | source
-fnm env --shell fish | source
-
