@@ -16,6 +16,8 @@ return {
     },
     fzf_colors = {
       ["gutter"] = { "bg", "PmenuSbar" },
+      ["bg"] = { "bg", "NormalFloat" },
+      ["bg+"] = { "bg", "NormalFloat" }
     },
   },
   config = function(_, opts)

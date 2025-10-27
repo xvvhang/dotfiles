@@ -25,21 +25,6 @@ end
 
 function set-theme
   set themes \
-    github-dark \
-    github-dark-colorblind \
-    github-dark-dimmed \
-    github-light \
-    github-light-colorblind \
-    kanagawa-dragon \
-    kanagawa-lotus \
-    kanagawa-wave \
-    nightfox-carbon \
-    nightfox-dawn \
-    nightfox-day \
-    nightfox-dusk \
-    nightfox-night \
-    nightfox-nord \
-    nightfox-tera \
     tokyonight-day \
     tokyonight-moon \
     tokyonight-night \

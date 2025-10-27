@@ -9,7 +9,7 @@ return {
     }
   },
   config = function(_, opts)
-    vim.api.nvim_set_hl(0, 'YaziFloat', { link = 'Pmenu', default = true })
+    vim.api.nvim_set_hl(0, 'YaziFloat', { link = 'NormalFloat', default = true })
     require('yazi').setup(opts)
   end,
   cmd = { 'Yazi' },
