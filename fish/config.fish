@@ -5,7 +5,7 @@ set -gx XDG_STATE_HOME "$HOME/.local/state"
 
 set -gx EDITOR nvim
 
-set -gx pure_prompt_symbol '>'
+set -U pure_symbol_prompt "λ"
 
 set -gx LESSHISTFILE '-'
 set -gx FZF_DEFAULT_OPTS_FILE "$XDG_CONFIG_HOME/fzf/fzfrc"
@@ -89,12 +89,13 @@ abbr ghcs 'gh copilot suggest'
 abbr ghce 'gh copilot explain'
 
 if test (uname -s) = Darwin
-  abbr bis 'brew install'
-  abbr bus 'brew uninstall'
+  abbr bad 'brew install'
+  abbr brm 'brew uninstall'
   abbr bup 'brew update'
   abbr bug 'brew upgrade'
-  abbr bss 'brew search'
+  abbr bsc 'brew search'
   abbr bcl 'brew cleanup'
+  abbr bls 'brew list'
   abbr blv 'brew leaves'
 end
 
