@@ -1,10 +1,11 @@
 font-family = JetBrains Maple Mono
 font-size = 13
+adjust-cursor-thickness = 2
 cursor-style-blink = false
 window-padding-x = 4
 window-padding-y = 0
+window-theme = auto
 shell-integration-features = no-cursor,ssh-terminfo
 macos-titlebar-proxy-icon = hidden
 macos-option-as-alt = true
 config-file = current
-window-theme = auto
