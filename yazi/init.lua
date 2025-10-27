@@ -1,28 +1,39 @@
 require("yatline"):setup({
-  section_separator = { open = '', close = '' },
-  part_separator = { open = '', close = '' },
+  show_background = false,
+  section_separator = { open = "", close = "" },
+	part_separator = { open = "", close = "" },
+	inverse_separator = { open = "", close = "" },
 
-  style_c = { bg="black" },
-
-  show_background = true,
-  display_header_line = false,
-
-  status_line = {
+  header_line = {
     left = {
-      section_a = {},
+      section_a = {
+        {type = "line", custom = false, name = "tabs", params = {"left"}},
+      },
       section_b = {},
-      section_c = {
-        { type = "string", custom = false, name = "hovered_path" }
-      }
+      section_c = {}
     },
     right = {
       section_a = {},
       section_b = {},
-      section_c = {
-        { type = "coloreds", custom = false, name = "permissions" },
-        { type = "string", custom = false, name = "hovered_size" },
-      }
+      section_c = {}
+    }
+  },
+  status_line = {
+    left = {
+      section_a = {},
+      section_b = {
+        {type = "string", custom = false, name = "hovered_path"},
+      },
+      section_c = {}
+    },
+    right = {
+      section_a = {},
+      section_b = {
+        {type = "string", custom = false, name = "hovered_size"},
+        {type = "coloreds", custom = false, name = "permissions"},
+        {type = "coloreds", custom = false, name = "count"},
+      },
+      section_c = {}
     }
   },
 })
-
