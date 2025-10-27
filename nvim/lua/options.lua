@@ -1,4 +1,4 @@
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 vim.opt.completeopt = "menu"
 vim.opt.cursorline = true
 vim.opt.expandtab = true
@@ -6,7 +6,7 @@ vim.opt.foldexpr = "v:lua.vim.lsp.foldexpr()"
 vim.opt.foldlevel = 99
 vim.opt.foldmethod = "expr"
 vim.opt.ignorecase = true
-vim.opt.laststatus = 3
+vim.opt.laststatus = 2
 vim.opt.number = true
 vim.opt.pumheight = 10
 vim.opt.shiftwidth = 2
