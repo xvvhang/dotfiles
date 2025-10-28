@@ -25,10 +25,11 @@ end
 
 function set-theme
   set themes \
-    tokyonight-day \
-    tokyonight-moon \
-    tokyonight-night \
-    tokyonight-storm
+    catppuccin \
+    gruvbox \
+    kanagawa \
+    nightfox \
+    tokyonight
   set selected_theme (printf "%s\n" $themes | fzf --prompt="Select a theme: " --no-preview)
 
   if test -z "$selected_theme"
