@@ -1,0 +1,1 @@
+set --global --export FZF_DEFAULT_OPTS_FILE $XDG_CONFIG_HOME/fzf/fzfrc
