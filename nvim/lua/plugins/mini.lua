@@ -9,11 +9,11 @@ local setup_mini = function()
   require('mini.cursorword').setup()
   require('mini.jump').setup()
   require('mini.jump2d').setup()
+  require('mini.pick').setup()
   require('mini.pairs').setup()
   require('mini.splitjoin').setup()
   require('mini.surround').setup()
   require('mini.trailspace').setup()
-
 
   local commentstring = require('ts_context_commentstring')
   require('mini.comment').setup({

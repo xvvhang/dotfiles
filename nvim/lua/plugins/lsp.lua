@@ -75,7 +75,6 @@ local vue_config = {
 return {
   'neovim/nvim-lspconfig',
   config = function()
-
     vim.lsp.config['emmet_language_server'] = emmet_config
     vim.lsp.config['lua_ls'] = lua_config
     vim.lsp.config['vtsls'] = vts_config
@@ -93,7 +92,6 @@ return {
       'vue_ls',
       'vtsls',
       'yamlls',
-      'copilot'
     })
   end,
   event = { 'BufEnter' }

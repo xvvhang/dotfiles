@@ -31,11 +31,11 @@ local plugins = {
   require('plugins.split')
 }
 
-require("lazy").setup({
-  spec = plugins,
+require("lazy").setup(plugins, {
   ui = {
-    size = { width = 0.6, height = 0.6 },
+    size = { width = 0.8, height = 0.8 },
     backdrop = 100
   },
-  checker = { enabled = true }
+  checker = { enabled = true, frequency = 604800 }
 })
+
