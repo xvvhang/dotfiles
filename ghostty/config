@@ -1,7 +1,8 @@
-font-family = JetBrains Maple Mono
+font-family = JetBrainsMono Nerd Font Mono, Maple Mono NF CN
 font-size = 13
 adjust-cursor-thickness = 2
 cursor-style-blink = false
+window-save-state = always
 window-padding-x = 4
 window-padding-y = 0
 window-theme = auto
