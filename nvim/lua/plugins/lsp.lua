@@ -53,8 +53,9 @@ local vue_config = {
       end
       local ts_client = clients[1]
 
-      local param = table.unpack(result)
-      local id, command, payload = table.unpack(param)
+      unpack = unpack or table.unpack
+      local param = unpack(result)
+      local id, command, payload = unpack(param)
       ts_client:exec_cmd({
         title = 'vue_request_forward', -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
         command = 'typescript.tsserverRequest',
@@ -87,6 +88,7 @@ return {
       'gopls',
       'jsonls',
       'lua_ls',
+      'rust-analyzer',
       'svelte',
       'tailwindcss',
       'vue_ls',
