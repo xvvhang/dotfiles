@@ -36,10 +36,12 @@ return {
     { '<leader>s', ':FzfLua live_grep<CR>' },
     { '<leader>g', ':FzfLua git_status<CR>' },
     { '<leader>h', ':FzfLua git_hunks<CR>' },
-    { 'ga', ':FzfLua lsp_code_actions<CR>' },
-    { 'gr', ':FzfLua lsp_references<CR>' },
-    { 'gi', ':FzfLua lsp_implementations<CR>' },
-    { 'gt', ':FzfLua lsp_typedefs<CR>' },
-    { 'gs', ':FzfLua lsp_document_symbols<CR>' },
+    { 'grf', ':FzfLua lsp_finder<CR>' },
+    { 'gd', ':FzfLua lsp_definitions<CR>' },
+    { 'gra', ':FzfLua lsp_code_actions<CR>' },
+    { 'grr', ':FzfLua lsp_references<CR>' },
+    { 'gri', ':FzfLua lsp_implementations<CR>' },
+    { 'grt', ':FzfLua lsp_typedefs<CR>' },
+    { 'gO', ':FzfLua lsp_document_symbols<CR>' },
   }
 }
