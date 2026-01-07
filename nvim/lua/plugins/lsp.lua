@@ -78,43 +78,34 @@ return {
     -- Set highlight for Vue components
     vim.api.nvim_set_hl(0, '@lsp.type.component', { link = '@type' })
 
-    -- Filter out vtsls diagnostics for Vue files
-    -- This prevents template/style errors while keeping script diagnostics from vue_ls
+    -- Use timer to periodically clear vtsls diagnostics in Vue files
+    -- This is the most reliable method to prevent template/style errors
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('VueLspConfig', { clear = true }),
       callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
-
         local bufnr = args.buf
-        -- When vtsls attaches to a vue file, filter its diagnostics
+
         if client and client.name == 'vtsls' and vim.bo[bufnr].filetype == 'vue' then
-          -- Set up diagnostic filtering for this buffer
-          vim.diagnostic.config({
-            virtual_text = {
-              source = 'if_many',
-            },
-          }, vim.lsp.diagnostic.get_namespace(client.id))
-
-          -- Create an autocommand to clear vtsls diagnostics in vue files
-          vim.api.nvim_create_autocmd('DiagnosticChanged', {
-            buffer = bufnr,
-            callback = function()
-              -- Get all diagnostics for this buffer
-              local diagnostics = vim.diagnostic.get(bufnr)
-              local filtered = {}
-
-              -- Keep only non-vtsls diagnostics
-              for _, diag in ipairs(diagnostics) do
-                local namespace = vim.diagnostic.get_namespace(diag.namespace)
-                if namespace and namespace.name and not namespace.name:match('vtsls') then
-                  table.insert(filtered, diag)
-                end
+          -- Use a timer to continuously clear vtsls diagnostics
+          -- Only clear when not in visual/select mode to avoid interfering with user operations
+          local timer = vim.uv.new_timer()
+          timer:start(100, 100, function()
+            vim.schedule(function()
+              -- Check if buffer is still valid
+              if not vim.api.nvim_buf_is_valid(bufnr) or vim.bo[bufnr].filetype ~= 'vue' then
+                timer:stop()
+                timer:close()
+                return
               end
 
-              -- Clear vtsls diagnostics namespace for this buffer
-              vim.diagnostic.reset(vim.lsp.diagnostic.get_namespace(client.id), bufnr)
-            end,
-          })
+              -- Only clear diagnostics when not in visual/select/operator-pending mode
+              local mode = vim.api.nvim_get_mode().mode
+              if mode ~= 'v' and mode ~= 'V' and mode ~= '\22' and mode ~= 's' and mode ~= 'S' and mode ~= '\19' and mode ~= 'no' then
+                vim.diagnostic.reset(vim.lsp.diagnostic.get_namespace(client.id), bufnr)
+              end
+            end)
+          end)
         end
       end,
     })
