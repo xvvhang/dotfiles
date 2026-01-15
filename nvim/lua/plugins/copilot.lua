@@ -5,5 +5,5 @@ return {
     panel = { enabled = false },
   },
   cmd = "Copilot",
-  event = "InsertEnter",
+  event = "BufEnter",
 }

@@ -9,5 +9,8 @@ return {
   opts = {
     preferred_picker = 'fzf',
     preferred_completion = 'blink',
+  },
+  keys = {
+    { '<leader>k', ':Opencode<CR>' }
   }
 }

@@ -4,7 +4,7 @@ return {
   opts = {
     open_for_directories = false,
     yazi_floating_window_border = 'none',
-    floating_window_scaling_factor = 0.65,
+    floating_window_scaling_factor = 0.8,
     highlight_groups = {
       hovered_buffer = { link = 'Normal' }
     },

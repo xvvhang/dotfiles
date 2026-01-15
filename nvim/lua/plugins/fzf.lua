@@ -4,8 +4,8 @@ return {
   opts = {
     'fzf-native',
     winopts = {
-      height = 0.65,
-      width = 0.65,
+      height = 0.8,
+      width = 0.8,
       row = 0.5,
       backdrop = 100,
       border = "none",
