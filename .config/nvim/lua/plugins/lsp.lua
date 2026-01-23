@@ -17,6 +17,7 @@ local vue_plugin = {
   location = vue_typescript_plugin_path,
   languages = tserver_filetypes,
   configNamespace = 'typescript',
+  enableForWorkspaceTypeScriptVersions = true
 }
 
 local vts_config = {
@@ -29,7 +30,58 @@ local vts_config = {
       },
     },
   },
-  filetypes = tserver_filetypes
+  filetypes = tserver_filetypes,
+  -- NOTE: https://github.com/vuejs/language-tools/wiki/Neovim
+  on_attach = function(client)
+    local existing_capabilities = client.server_capabilities
+    if vim.bo.filetype == 'vue' then
+      existing_capabilities.semanticTokensProvider.full = false
+    else
+      existing_capabilities.semanticTokensProvider.full = true
+    end
+  end
+}
+
+local vue_config = {
+  -- NOTE: https://github.com/vuejs/language-tools/wiki/Neovim
+  on_init = function(client)
+    client.handlers['tsserver/request'] = function(_, result, context)
+      local vtsls_clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = 'vtsls' })
+      local clients = {}
+
+      vim.list_extend(clients, vtsls_clients)
+
+      if #clients == 0 then
+        vim.notify('Could not find `vtsls` or `ts_ls` lsp client, `vue_ls` would not work without it.', vim.log.levels.ERROR)
+        return
+      end
+      local ts_client = clients[1]
+
+      local unpack = table.unpack or unpack
+      local param = unpack(result)
+      local id, command, payload = unpack(param)
+      ts_client:exec_cmd({
+        title = 'vue_request_forward', -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
+        command = 'typescript.tsserverRequest',
+        arguments = {
+          command,
+          payload,
+        },
+      }, { bufnr = context.bufnr }, function(_, r)
+        local response = r and r.body
+        -- TODO: handle error or response nil here, e.g. logging
+        -- NOTE: Do NOT return if there's an error or no response, just return nil back to the vue_ls to prevent memory leak
+        if not response then
+          return nil
+        end
+
+        local response_data = { { id, response } }
+
+        ---@diagnostic disable-next-line: param-type-mismatch
+        client:notify('tsserver/response', response_data)
+      end)
+    end
+  end,
 }
 
 return {
@@ -37,6 +89,7 @@ return {
   config = function()
     vim.lsp.config['lua_ls'] = lua_config
     vim.lsp.config['vtsls'] = vts_config
+    vim.lsp.config['vue_ls'] = vue_config
 
     vim.lsp.enable({
       'bashls',
