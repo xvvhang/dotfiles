@@ -8,12 +8,13 @@ local lua_config = {
   }
 }
 
-local vue_language_server_path = vim.fn.stdpath('data') .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+local vue_typescript_plugin_path = vim.fn.stdpath("data") ..
+  "/mason/packages/vue-language-server/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
 local tserver_filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
 
 local vue_plugin = {
   name = '@vue/typescript-plugin',
-  location = vue_language_server_path,
+  location = vue_typescript_plugin_path,
   languages = tserver_filetypes,
   configNamespace = 'typescript',
 }
@@ -26,14 +27,6 @@ local vts_config = {
           vue_plugin,
         },
       },
-    },
-  },
-  filetypes = { 'vue' },
-}
-local ts_config = {
-  init_options = {
-    plugins = {
-      vue_plugin,
     },
   },
   filetypes = tserver_filetypes
@@ -59,10 +52,10 @@ return {
       'oxlint',
       'rust-analyzer',
       'tailwindcss',
-      'tsgo',
       'vtsls',
       'vue_ls',
       'yamlls',
+      'zls'
     })
   end,
   event = { 'BufReadPre', 'BufNewFile' }

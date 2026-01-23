@@ -67,10 +67,15 @@ return {
         diff
       },
       lualine_x = {
-        'copilot',
         'searchcount',
         'selectioncount',
-        'location',
+        'copilot',
+        {
+          'lsp_status',
+          icon = ' ',
+          show_name = false
+        },
+        'location'
       }
     },
     extensions = {
