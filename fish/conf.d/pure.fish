@@ -1,4 +1,4 @@
-set --global pure_version 4.12.0 # For bug report and tag-after-merge workflow
+set --global pure_version 4.15.0 # For bug report and tag-after-merge workflow
 set --global --export pure_symbol_prompt "λ"
 
 # Base colors
@@ -75,6 +75,13 @@ _pure_set_default pure_begin_prompt_with_current_directory true
 # false - single prompt character, default
 # true - separate prompt character
 _pure_set_default pure_separate_prompt_on_error false
+
+# Prefix the prompt with a list of exit statuses ($pipestatus) if at least one is non-zero
+_pure_set_default pure_show_exit_status false
+_pure_set_default pure_convert_exit_status_to_signal false
+_pure_set_default pure_symbol_exit_status_prefix "|"
+_pure_set_default pure_symbol_exit_status_separator "|"
+_pure_set_default pure_color_exit_status pure_color_danger
 
 # Max execution time of a process before its run time is shown when it exits
 _pure_set_default pure_threshold_command_duration 5
