@@ -13,20 +13,20 @@ function theme
     exit 1
   end
 
-  # switch $selected_theme
-  #   case flexoki
-  #     set zed_theme "Flexoki Dark"
-  #   case github
-  #     set zed_theme "Github Dark Tritanopia"
-  #   case gruvbox
-  #     set zed_theme "Gruvbox Dark"
-  #   case kanagawa
-  #     set zed_theme "Kanagawa Dragon"
-  #   case melange
-  #     set zed_theme "Melange Dark"
-  #   case tokyonight
-  #     set zed_theme "Tokyo Night"
-  # end
+  switch $selected_theme
+    case flexoki
+      set zed_theme "Flexoki Dark"
+    case github
+      set zed_theme "Github Dark Tritanopia"
+    case gruvbox
+      set zed_theme "Gruvbox Dark"
+    case kanagawa
+      set zed_theme "Kanagawa Dragon"
+    case melange
+      set zed_theme "Melange Dark"
+    case tokyonight
+      set zed_theme "Tokyo Night"
+  end
 
   # Change Ghostty theme
   set ghostty_dir $XDG_CONFIG_HOME/ghostty
@@ -51,11 +51,11 @@ function theme
   end
 
   # Change Zed theme
-  # set zed_config $XDG_CONFIG_HOME/zed/settings.json
-  # if test -f $zed_config
-  #   sed '/^\/\//d' $zed_config | sed "s/\"theme\": \"[^\"]*\"/\"theme\": \"$zed_theme\"/" > $zed_config.tmp && mv $zed_config.tmp $zed_config
-  #   echo "Zed set to $selected_theme"
-  # else
-  #   echo "Zed settings file not found."
-  # end
+  set zed_config $XDG_CONFIG_HOME/zed/settings.json
+  if test -f $zed_config
+    sed '/^\/\//d' $zed_config | sed "s/\"theme\": \"[^\"]*\"/\"theme\": \"$zed_theme\"/" > $zed_config.tmp && mv $zed_config.tmp $zed_config
+    echo "Zed set to $selected_theme"
+  else
+    echo "Zed settings file not found."
+  end
 end
