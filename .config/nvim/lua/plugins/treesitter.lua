@@ -3,7 +3,7 @@ return {
   checkout = 'master',
   build = function() vim.cmd('TSUpdate') end,
   config = function()
-    require('nvim-treesitter.configs').setup({
+    require('nvim-treesitter').setup({
       auto_install = true,
       highlight = { enable = true },
       incremental_selection = {
