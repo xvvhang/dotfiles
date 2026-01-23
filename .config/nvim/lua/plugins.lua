@@ -28,7 +28,8 @@ local plugins = {
   require('plugins.copilot'),
   require('plugins.opencode'),
   require('plugins.markdown'),
-  require('plugins.split')
+  require('plugins.split'),
+  require('plugins.bqf')
 }
 
 require("lazy").setup(plugins, {
