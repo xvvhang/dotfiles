@@ -30,13 +30,13 @@ function theme
 
   # Change Ghostty theme
   set ghostty_dir $XDG_CONFIG_HOME/ghostty
-  set ghostty_theme_file $ghostty_dir/$selected_theme
-  set ghostty_current_file $ghostty_dir/current
-  if test -f $ghostty_theme_file
-    cp $ghostty_theme_file $ghostty_current_file
+  set ghostty_selected_theme_file $ghostty_dir/$selected_theme
+  set ghostty_theme_file $ghostty_dir/theme
+  if test -f $ghostty_selected_theme_file
+    cp $ghostty_selected_theme_file $ghostty_theme_file
     echo "Ghostty set to $selected_theme"
   else
-    echo "Theme file '$ghostty_theme_file' not found for Ghostty."
+    echo "Theme file '$ghostty_selected_theme_file' not found for Ghostty."
   end
 
   # Change Neovim theme
