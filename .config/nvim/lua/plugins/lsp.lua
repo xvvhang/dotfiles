@@ -16,8 +16,7 @@ local vue_plugin = {
   name = '@vue/typescript-plugin',
   location = vue_typescript_plugin_path,
   languages = tserver_filetypes,
-  configNamespace = 'typescript',
-  enableForWorkspaceTypeScriptVersions = true
+  configNamespace = 'typescript'
 }
 
 local vts_config = {
@@ -29,6 +28,14 @@ local vts_config = {
         },
       },
     },
+    typescript = {
+      tsserver = {
+        maxTsServerMemory = 8192
+      },
+      preferences = {
+        includePackageJsonAutoImports = false
+      }
+    }
   },
   filetypes = tserver_filetypes,
   -- NOTE: https://github.com/vuejs/language-tools/wiki/Neovim
@@ -71,10 +78,6 @@ local vue_config = {
         local response = r and r.body
         -- TODO: handle error or response nil here, e.g. logging
         -- NOTE: Do NOT return if there's an error or no response, just return nil back to the vue_ls to prevent memory leak
-        if not response then
-          return nil
-        end
-
         local response_data = { { id, response } }
 
         ---@diagnostic disable-next-line: param-type-mismatch
