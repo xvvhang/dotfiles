@@ -24,28 +24,6 @@ local setup_mini = function()
     }
   })
 
-  require('mini.git').setup()
-  ---@diagnostic disable-next-line:undefined-global
-  vim.keymap.set('n', 'gbl', function() MiniGit.show_at_cursor({ split = 'horizontal' }) end)
-
-  require('mini.diff').setup({
-    view = {
-      style = 'sign',
-      signs = {
-        add = '┃',
-        change = '┃',
-        delete = '_'
-      }
-    },
-    mappings = {
-      apply = 'ga',
-      reset = 'gu',
-      textobject = 'gh'
-    }
-  })
-  ---@diagnostic disable-next-line:undefined-global
-  vim.keymap.set('n', 'gho', function() MiniDiff.toggle_overlay() end)
-
   require('mini.hipatterns').setup({
     highlighters = {
       fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },

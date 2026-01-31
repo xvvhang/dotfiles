@@ -22,6 +22,7 @@ local plugins = {
   require('plugins.fzf'),
   require('plugins.yazi'),
   require('plugins.trouble'),
+  require('plugins.gitsigns'),
   require('plugins.treesitter'),
   require('plugins.mason'),
   require('plugins.lsp'),
