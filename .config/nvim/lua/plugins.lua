@@ -21,6 +21,7 @@ local plugins = {
   require('plugins.mini'),
   require('plugins.fzf'),
   require('plugins.yazi'),
+  require('plugins.trouble'),
   require('plugins.treesitter'),
   require('plugins.mason'),
   require('plugins.lsp'),
@@ -29,7 +30,6 @@ local plugins = {
   require('plugins.opencode'),
   require('plugins.markdown'),
   require('plugins.split'),
-  require('plugins.bqf')
 }
 
 require("lazy").setup(plugins, {
