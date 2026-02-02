@@ -37,5 +37,7 @@ return {
     { '<leader>s', ':FzfLua live_grep<CR>' },
     { '<leader>g', ':FzfLua git_status<CR>' },
     { '<leader>h', ':FzfLua git_hunks<CR>' },
+    { 'gs', ':FzfLua grep_cword<CR>' },
+    { 'gs', ':FzfLua grep_visual<CR>', mode = { 'v' } }
   }
 }
