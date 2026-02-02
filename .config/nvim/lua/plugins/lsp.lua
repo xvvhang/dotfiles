@@ -96,7 +96,6 @@ return {
 
     vim.lsp.enable({
       'bashls',
-      'copilot',
       'cssls',
       'dockerls',
       'emmet_language_server',
