@@ -18,6 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
   { import = 'themes.current' },
   require('plugins.lualine'),
+  require('plugins.bufferline'),
   require('plugins.mini'),
   require('plugins.fzf'),
   require('plugins.yazi'),

@@ -8,7 +8,7 @@ return {
       width = 0.8,
       row = 0.5,
       backdrop = 100,
-      fullscreen = true,
+      fullscreen = false,
       border = "none",
       preview = {
         border = "none",
