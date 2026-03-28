@@ -1,6 +1,6 @@
 [user]
 	name = xuhang
-	email = xvvhang@gmail.com
+	email = xvvhang@icloud.com
 [core]
 	editor = nvim
 	pager = delta
@@ -20,6 +20,6 @@
 [push]
 	default = current
 [credential "https://github.com"]
-	helper = !/usr/local/bin/gh auth git-credential
+	helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = !/usr/local/bin/gh auth git-credential
+	helper = !/usr/bin/gh auth git-credential
