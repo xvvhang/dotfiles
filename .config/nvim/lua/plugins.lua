@@ -28,8 +28,6 @@ local plugins = {
   require('plugins.mason'),
   require('plugins.lsp'),
   require('plugins.blink'),
-  require('plugins.copilot'),
-  require('plugins.opencode'),
   require('plugins.markdown'),
   require('plugins.split'),
 }
