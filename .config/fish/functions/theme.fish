@@ -75,6 +75,12 @@ function theme
   set nvim_current_file $nvim_theme_dir/current.lua
   if test -f $nvim_theme_file
     cp $nvim_theme_file $nvim_current_file
+    # Extract colorscheme name from the theme file
+    set nvim_colorscheme (string match -r "colorscheme ([^'\")\s]+)" < $nvim_theme_file)[2]
+    # Apply to all running nvim instances
+    for sock in /run/user/(id -u)/nvim.*.0
+      nvim --server $sock --remote-send "<Cmd>colorscheme $nvim_colorscheme<CR>" 2>/dev/null
+    end
     echo "Neovim set to $selected_theme"
   else
     echo "Theme file '$nvim_theme_file' not found for Neovim."
