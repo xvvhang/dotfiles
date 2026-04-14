@@ -1,3 +1,4 @@
+vim.opt.autoread = true
 vim.opt.cmdheight = 1
 vim.opt.completeopt = "menu"
 vim.opt.cursorline = true
